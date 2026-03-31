@@ -6,8 +6,8 @@ plugins {
     alias(libs.plugins.safe.args)
     alias(libs.plugins.kotlin.parcelize)
     alias(libs.plugins.kotlin.compose)
- //   alias(libs.plugins.google.services)
- //   alias(libs.plugins.firebase.crashlytics)
+    alias(libs.plugins.google.services)
+    alias(libs.plugins.firebase.crashlytics)
 }
 
 android {
@@ -24,7 +24,15 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    buildFeatures {
+        buildConfig = true
+    }
+
     buildTypes {
+        debug {
+            isMinifyEnabled = false
+            buildConfigField("String", "MAPS_API_KEY", "\"${project.properties["MAPS_API_KEY"]}\"")
+        }
         release {
             isMinifyEnabled = false
             proguardFiles(
@@ -93,13 +101,16 @@ dependencies {
     implementation(libs.compose.ui.tooling)
     implementation(libs.activity.compose)
   //  implementation(libs.playservices.ads)
-   /* implementation(platform(libs.firebase.bom))
+    implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.auth.ktx)
     implementation(libs.firebase.analytics)
     implementation(libs.firebase.crashlytics)
     implementation(libs.firebase.messaging)
     implementation(libs.firebase.firestore.ktx)
-    implementation(libs.firebase.database.ktx)*/
+    implementation(libs.firebase.database.ktx)
     implementation(libs.hilt.navigation.compose)
     implementation(libs.coil.compose)
+    implementation(libs.play.services.maps)
+    implementation(libs.maps.compose)
+    implementation(libs.firebase.database.ktx)
 }

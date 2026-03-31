@@ -1,5 +1,6 @@
-package com.yogi.interviewproject.Presentation.post.screen
+package com.yogi.interviewproject.presentation.post.screen
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -29,6 +30,7 @@ import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.yogi.interviewproject.R
 import com.yogi.interviewproject.data.model.responce.ProductResponce
+import com.yogi.interviewproject.presentation.post.effect.PostUiEffect
 import com.yogi.interviewproject.presentation.post.event.PostUiEvent
 import com.yogi.interviewproject.presentation.post.viewmodel.PostViewModel
 
@@ -38,6 +40,18 @@ fun ProductListScreen(navController: NavController,viewModel: PostViewModel = hi
     val state by viewModel.uiState.collectAsState()
     val context = LocalContext.current
     val listState = rememberLazyListState()
+
+    LaunchedEffect(Unit) {
+        viewModel.effect.collect {
+            when (it) {
+                PostUiEffect.NavigateToDetail -> {
+                    navController.navigate("LocationScreen")
+                }
+                PostUiEffect.ShowErrorDialog -> {}
+                is PostUiEffect.ShowToast -> {}
+            }
+        }
+    }
 
     LaunchedEffect(Unit) {
         viewModel.onEvent(PostUiEvent.LoadProductList)
@@ -61,8 +75,10 @@ fun ProductListScreen(navController: NavController,viewModel: PostViewModel = hi
 
     LazyColumn(state = listState) {
 
-        items(state.productList) {
-            ProductItem(it)
+        items(state.productList) { it ->
+            ProductItem(it) {
+                viewModel.onEvent(PostUiEvent.OnItemClick(it.id))
+            }
         }
 
         item {
@@ -84,11 +100,12 @@ fun ProductListScreen(navController: NavController,viewModel: PostViewModel = hi
 }
 
 @Composable
-fun ProductItem(product: ProductResponce.Product) {
+fun ProductItem(product: ProductResponce.Product, onItemClick: (ProductResponce.Product) -> Unit) {
 
     Row(
         modifier = Modifier
             .fillMaxWidth()
+            .clickable{ onItemClick(product) }
             .padding(10.dp)
     ) {
 

@@ -4,11 +4,12 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.yogi.interviewproject.Presentation.post.screen.CreatePostScreen
+import com.yogi.interviewproject.presentation.Location.screen.TrackingScreen
+import com.yogi.interviewproject.presentation.post.screen.CreatePostScreen
 import com.yogi.interviewproject.Screen.DashboardScreen
 import com.yogi.interviewproject.SplashScreen
-import com.yogi.interviewproject.Presentation.post.screen.PostScreen
-import com.yogi.interviewproject.Presentation.post.screen.ProductListScreen
+import com.yogi.interviewproject.presentation.post.screen.PostScreen
+import com.yogi.interviewproject.presentation.post.screen.ProductListScreen
 
 @Composable
 fun AppNavigation() {
@@ -37,6 +38,10 @@ fun AppNavigation() {
 
         composable("ProductListScreen") {
             ProductListScreen(navController)
+        }
+
+        composable("LocationScreen") {
+            TrackingScreen(navController)
         }
     }
 }

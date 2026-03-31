@@ -73,6 +73,7 @@ fun ProductListScreen(navController: NavController,viewModel: PostViewModel = hi
                 ) {
                     CircularProgressIndicator(
                         modifier = Modifier.size(48.dp),
+
                         color = MaterialTheme.colorScheme.primary
                     )
                 }

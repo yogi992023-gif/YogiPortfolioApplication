@@ -39,7 +39,7 @@ class UserTrackingViewModel @Inject constructor(
         private set
 
     init {
-        moveDriver()
+     //   moveDriver()
     }
 
     private fun moveDriver() {

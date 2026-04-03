@@ -10,5 +10,6 @@ sealed class TrackingUiEvent {
     data class OnTitleChange(val value: String) : TrackingUiEvent()
     data class OnBodyChange(val value: String) : TrackingUiEvent()
     object Submit : TrackingUiEvent()
+    data class StartTracking(val driverId: String) : TrackingUiEvent()
 
 }

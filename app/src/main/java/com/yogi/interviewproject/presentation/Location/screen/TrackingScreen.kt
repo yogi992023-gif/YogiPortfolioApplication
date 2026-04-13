@@ -47,7 +47,9 @@ fun TrackingScreen(navController: NavController, viewModel: UserTrackingViewMode
 
     // Start
     LaunchedEffect(Unit) {
+
         viewModel.start("user_1", "driver_1")
+
     }
 
     val user = state.userLocation

@@ -45,9 +45,7 @@ fun TrackingScreen(navController: NavController, viewModel: DriverViewModel = hi
 
     // Start tracking
     LaunchedEffect(Unit) {
-
         viewModel.start("driver_1", "user_1")
-
     }
 
     val driver = state.driverLocation

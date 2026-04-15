@@ -1,127 +1,93 @@
-# 📍 Live Tracking App (Jetpack Compose + Firebase)
+# 🚗 Driver Tracking App (Live Location Sharing)
 
-## 🚀 Overview
+## 📌 Overview
 
-This project is a real-time location tracking application built using **Jetpack Compose** and **Firebase Realtime Database**. It demonstrates live location updates between users (like Uber/Rapido concept) with modern Android architecture.
+This is a **Driver Application** that shares the driver's live location in real-time to Firebase.
+It enables users to track the driver’s movement continuously on the map (Uber/Ola-like system).
 
 ---
 
-## ✨ Key Features
+## ✨ Features
 
-* 🔴 Real-time location tracking using Firebase
-* 🗺️ Google Maps integration with live marker updates
-* 📡 Continuous location updates (Driver/User)
-* 🔄 Auto-refresh UI using Jetpack Compose state
-* 🧭 MVVM architecture with clean code structure
-* ⚡ Coroutines & Flow for async handling
-* 🔐 Secure Firebase database structure
+* 📍 Real-time location sharing
+* 🗺️ Google Maps integration (Jetpack Compose)
+* 🔄 Continuous location updates to Firebase
+* 🚗 Driver marker movement tracking
+* 📡 MVVM architecture with clean separation
+* ⚡ Kotlin Coroutines & Flow
+* 🔐 Hilt Dependency Injection
 
 ---
 
 ## 🛠️ Tech Stack
 
-* **Kotlin**
-* **Jetpack Compose**
-* **Firebase Realtime Database**
-* **Google Maps SDK**
-* **MVVM Architecture**
-* **Hilt (Dependency Injection)**
-* **Coroutines & Flow**
-* **Retrofit (Optional API integration)**
+* **Language**: Kotlin
+* **UI**: Jetpack Compose
+* **Architecture**: MVVM
+* **Maps**: Google Maps SDK
+* **Backend**: Firebase Realtime Database
+* **Location**: FusedLocationProviderClient
+* **DI**: Hilt
+* **Async**: Coroutines + Flow
 
 ---
 
-## 📱 App Flow
+## 📱 How It Works
 
-1. User selects a driver
-2. Driver location stored in Firebase
-3. App listens to Firebase changes
-4. Map updates marker in real-time
-5. UI reflects live movement
-
----
-
-## 📂 Project Structure
-
-```
-├── data
-│   ├── repository
-│   ├── remote
-├── domain
-├── presentation
-│   ├── screen
-│   ├── viewmodel
-├── di
-```
+1. Driver opens the app
+2. App requests location permission
+3. Driver’s current location is fetched
+4. Location is pushed to Firebase continuously
+5. User app receives updates and displays on map
 
 ---
 
-## 🔥 Firebase Database Structure
+## 🗂️ Project Structure
 
-```json
-{
-  "drivers": {
-    "driver1": {
-      "lat": 12.9716,
-      "lng": 77.5946
-    }
-  }
-}
+```id="d5n2hn"
+presentation/
+    ├── screen/
+    ├── viewmodel/
+domain/
+data/
+    ├── repository/
+    ├── firebase/
 ```
 
 ---
 
-## 🗺️ Google Maps Setup
+## 🔥 Key Implementation
 
-* Add API Key in `AndroidManifest.xml`
-* Enable Maps SDK in Google Cloud Console
-
----
-
-## ⚙️ Setup Instructions
-
-1. Clone the repository
-2. Add `google-services.json` in `app/`
-3. Add Google Maps API key
-4. Sync project
-5. Run the app
+* Used `FusedLocationProviderClient` for accurate GPS updates
+* Sent location updates to Firebase Realtime Database
+* Used Flow to emit real-time location changes
+* Optimized updates to avoid excessive API calls
 
 ---
 
 ## 📸 Screenshots
 
-* Live map with moving marker
-* Real-time location updates
+(Add driver app screenshots here)
 
 ---
 
-## 🎯 Use Cases
+## 🚀 Future Improvements
 
-* Ride tracking apps (Uber, Rapido)
-* Delivery tracking
-* Fleet management
-
----
-
-## 📌 Future Improvements
-
-* Route drawing (Polyline)
-* ETA calculation
-* Multiple driver tracking
-* Background location updates
+* 🔋 Background location tracking (Foreground Service)
+* 📶 Offline caching & retry mechanism
+* 🔔 Status update (Online / Offline driver)
+* 🧭 Route optimization
 
 ---
 
-## 🤝 Contribution
+## 👨‍💻 Author
 
-Feel free to fork and improve this project.
+**Yogeshwaran Ravichandran**
 
----
-
-## 📧 Contact
-
-**Yogi MR**
-Android Developer (4+ Years Experience)
-GitHub: https://github.com/yogi992023-gif
+* GitHub: https://github.com/yogi992023-gif
 
 ---
+
+## ⭐ Support
+
+If you like this project, give it a ⭐ on GitHub!
